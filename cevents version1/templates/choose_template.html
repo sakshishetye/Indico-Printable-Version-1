@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  .w3-btn {
+    width: 150px;
+  }
+</style>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+<script language="javascript" type="text/javascript">
+  function printDiv(divID) {
+    //Get the HTML of div
+    var divElements = document.getElementById(divID).innerHTML;
+    //Get the HTML of whole page
+    var oldPage = document.body.innerHTML;
+    //Reset the page's HTML with div's HTML only
+    document.body.innerHTML =
+      "<html><head><title></title></head><body>" +
+      divElements + "</body>";
+    //Print Page
+    window.print();
+    //Restore orignal HTML
+    document.body.innerHTML = oldPage;
+  }
+</script>
+<script>function myFunction() {
+    window.print();
+  }</script>
+
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="notice">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+  <div class="container my-3">
+    <form action="{{ url_for('print_template') }}" method="POST" class="table">
+      <table class="table">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">URL</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          {% for event in calender %}
+
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{event.title}}</td>
+            <td>{{event.url}}</td>
+            <td>{{event.date}}</td>
+            <td>{{event.time}}</td>
+
+            <td>
+              <form action="/print_template" method="POST">
+                <select name="notice" id="notice" class="target" method="GET">
+                  <option value="daa">DAA</option>
+                  <option value="dbs">DBS</option>
+                  <option value="dcs">DCS</option>
+                  <option value="dcmp">DHEP</option>
+                  <option value="dnmp">DCMP</option>
+                  <option value="dhep">DNMP</option>
+                  <option value="dtp">DTP</option>
+                  <option value="wednesday">Wednesday Colloquium</option>
+                  <option value="aset">Aset Colloquium</option>
+                  <!-- <option value="audi">Wednesday Colloquium</option>
+                <option value="audi">Wednesday Colloquium</option>
+                <option value="audi">Wednesday Colloquium</option> -->
+                </select>
+
+                <!-- <button class="btn btn-primary hidden-print" id="notice" onclick="myFunction()"
+                  formaction="/print_template"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                  Print</button> -->
+                <!-- <a href="notice.pdf" download="file"><b> download </b>
+                </a> -->
+                <button class="target" type="submit">
+                  Print
+                </button>
+
+  </div>
+  </div>
+  </form>
+
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+  </form>
+  </div>
+
+  {% endblock %}

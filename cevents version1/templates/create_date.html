@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <form action="{{ url_for('createdb') }}" method="POSt">
+        <label for="Select Date">Start Date:</label>
+        <input type="date" id="S_Date" name="S_Date">
+        <label for="Select Date">To Date:</label>
+        <input type="date" id="T_Date" name="T_Date">
+         <input type="submit">
+    </form>
+
+
+</body>
+
+</html>
+
+{% endblock %}

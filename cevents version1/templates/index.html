@@ -1,0 +1,22 @@
+<style>
+    .gradient-custom {
+        background: #c471f5;
+        background: -webkit-linear-gradient(to right, rgb(191, 228, 244), rgb(211, 233, 246));
+        background: linear-gradient(to right, rgb(151, 175, 255), rgb(68, 126, 214))
+    }
+</style>
+<img src="https://www.tifr.res.in/~nsg/images/tifrlogo.png" alt="oppps!" height="80">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary gradient-custom ">
+
+    <a class="navbar-brand" href="{{url_for('home')}}"><b>Indigo Printable Version</b></a>
+    <a class="nav-link text-white" href="{{url_for('choose_template')}}"><b>Templates</b></a>
+    <a class="nav-link text-white" href="{{ url_for('create_date') }}"><b>Create Database</b></a>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    </div>
+
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
